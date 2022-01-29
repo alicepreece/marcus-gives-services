@@ -22,13 +22,21 @@ public class ClientRepository {
     }
 
     public List<Client> getClients() {
-        List<Client> clientList = new ArrayList<>();
-        clients.find(Client.class).into(clientList);
-        return clientList;
+        try {
+            List<Client> clientList = new ArrayList<>();
+            clients.find(Client.class).into(clientList);
+            return clientList;
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     public Client getClientByID(String filterID) {
-        return clients.find(Filters.eq("id", Integer.parseInt(filterID)), Client.class).first();
+        try {
+            return clients.find(Filters.eq("id", Integer.parseInt(filterID)), Client.class).first();
+        } catch (Exception e) {
+            return new Client();
+        }
     }
 
 

@@ -1,21 +1,26 @@
 package com.example.restservice.services;
 
+import com.example.restservice.dataAccess.ClientRepository;
 import com.example.restservice.models.Client;
+
+import java.util.List;
 
 public class ClientService {
 
+    ClientRepository repository;
+
     public ClientService(){
+        repository = new ClientRepository();
     }
 
     public static void main(String[] args) {
     }
 
-    public static Client getClientWithId(String id) {
-        if (id != null) {
-            int convertedId = Integer.parseInt(id);
-            return new Client(convertedId, "Hermione", "Granger");
-        } else {
-            return new Client(999, "Error", "Error");
-        }
+    public List<Client> getClients() {
+        return repository.getClients();
+    }
+
+    public Client getClient(String id) {
+        return repository.getClientByID(id);
     }
 }
