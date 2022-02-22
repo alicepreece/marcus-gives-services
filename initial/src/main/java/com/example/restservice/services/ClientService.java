@@ -23,4 +23,6 @@ public class ClientService {
     public Client getClient(String id) {
         return repository.getClientByID(id);
     }
+
+    public Client getClientFromUsername(String username) { return repository.getClientByUsername(username); }
 }

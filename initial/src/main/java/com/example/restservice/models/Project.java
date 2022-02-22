@@ -24,7 +24,8 @@ public class Project {
 	public Project() {
 	}
 
-	public Project(int id, String name, String region, String aims, String fundType, String strategy, String avoidedAreas, String managementFees, List<Integer> investors, int total) {
+	public Project(String _id, int id, String name, String region, String aims, String fundType, String strategy, String avoidedAreas, String managementFees, List<Integer> investors, int total) {
+		this._id = _id;
 		this.id = id;
 		this.name = name;
 		this.region = region;

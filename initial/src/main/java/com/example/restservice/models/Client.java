@@ -10,28 +10,16 @@ public class Client {
     @BsonRepresentation(BsonType.OBJECT_ID)
     public String _id;
     private int id;
-    private String firstName;
-    private String surname;
+    private User user;
     private String emailAddress;
     private int accountNumber;
-    private String preferences;
+    private String recommendation;
     private List<Integer> projects;
     private List<Integer> pastProjects;
     private int investableAmount;
+    private String advisorTeam;
 
     public Client() {
-    }
-
-    public Client(int id, String firstName, String surname, String emailAddress, int accountNumber, String preferences, List<Integer> projects, List<Integer> pastProjects, int investableAmount) {
-        this.id = id;
-        this.firstName = firstName;
-        this.surname = surname;
-        this.emailAddress = emailAddress;
-        this.accountNumber = accountNumber;
-        this.preferences = preferences;
-        this.projects = projects;
-        this.pastProjects = pastProjects;
-        this.investableAmount = investableAmount;
     }
 
     public int getId() {
@@ -42,20 +30,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public User getUser() {
+        return user;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getEmailAddress() {
@@ -74,12 +54,12 @@ public class Client {
         this.accountNumber = accountNumber;
     }
 
-    public String getPreferences() {
-        return preferences;
+    public String getRecommendation() {
+        return recommendation;
     }
 
-    public void setPreferences(String preferences) {
-        this.preferences = preferences;
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 
     public List<Integer> getProjects() {
@@ -106,6 +86,14 @@ public class Client {
         this.investableAmount = investableAmount;
     }
 
+    public String getAdvisorTeam() {
+        return advisorTeam;
+    }
+
+    public void setAdvisorTeam(String advisorTeam) {
+        this.advisorTeam = advisorTeam;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,31 +102,31 @@ public class Client {
         return id == client.id &&
                 accountNumber == client.accountNumber &&
                 investableAmount == client.investableAmount &&
-                Objects.equals(firstName, client.firstName) &&
-                Objects.equals(surname, client.surname) &&
+                Objects.equals(user, client.user) &&
                 Objects.equals(emailAddress, client.emailAddress) &&
-                Objects.equals(preferences, client.preferences) &&
+                Objects.equals(recommendation, client.recommendation) &&
+                Objects.equals(advisorTeam, client.advisorTeam) &&
                 Objects.equals(projects, client.projects) &&
                 Objects.equals(pastProjects, client.pastProjects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, surname, emailAddress, accountNumber, preferences, projects, pastProjects, investableAmount);
+        return Objects.hash(id, user, emailAddress, accountNumber, recommendation, projects, pastProjects, investableAmount, advisorTeam);
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                ", id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
+                "id=" + id +
+                ", user=" + user +
                 ", emailAddress='" + emailAddress + '\'' +
                 ", accountNumber=" + accountNumber +
-                ", preferences='" + preferences + '\'' +
+                ", recommendation='" + recommendation + '\'' +
                 ", projects=" + projects +
                 ", pastProjects=" + pastProjects +
                 ", investableAmount=" + investableAmount +
+                ", advisorTeam=" + advisorTeam +
                 '}';
     }
 }

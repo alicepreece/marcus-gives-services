@@ -70,49 +70,197 @@ db.projects.insertMany([
 // private List<Integer> pastProjects;
 // private int investableAmount;
 
+// private int id;
+// private String username;
+// private String password;
+// private String firstName;
+// private String lastName;
+// private RoleEnum role;
+// private String authdata;
+
+
 db.clients.insertMany([
   {
     id: 0,
-    firstName: "Harry",
-    surname: "Potter",
+    user: {
+      username: "hpotter",
+      password: "hp!password",
+      firstName: "Harry",
+      lastName: "Potter",
+      role: "CLIENT",
+    },
     emailAddress: "h.potter@gmail.com",
     accountNumber: 773354,
-    preferences: "Alpha",
+    recommendation: "Alpha",
     projects: [0],
     pastProjects: [1],
-    investableAmount: 33000
+    investableAmount: 33000,
+    advisorTeam: "Hogwarts"
   },
   {
     id: 1,
-    firstName: "Ginny",
-    surname: "Potter",
+    user: {
+      username: "gpotter",
+      password: "gp!password",
+      firstName: "Ginny",
+      lastName: "Potter",
+      role: "CLIENT"
+    },
     emailAddress: "g.potter@gmail.com",
     accountNumber: 773354,
-    preferences: "Delta",
-    projects: [0, 3],
+    recommendation: "Delta",
+    projects: [0, 2],
     pastProjects: [1],
-    investableAmount: 4000
+    investableAmount: 4000,
+    advisorTeam: "Hogwarts"
   },
   {
     id: 2,
-    firstName: "Hermione",
-    surname: "Weasley",
+    user: {
+      username: "hweasley",
+      password: "hw!password",
+      firstName: "Hermione",
+      lastName: "Weasley",
+      role: "CLIENT"
+    },
     emailAddress: "h.weasley@gmail.com",
     accountNumber: 642279,
-    preferences: "Beta",
-    projects: [2, 3],
+    recommendation: "Beta",
+    projects: [1, 3],
     pastProjects: [],
-    investableAmount: 124000
+    investableAmount: 124000,
+    advisorTeam: "Hogwarts"
   },
   {
     id: 3,
-    firstName: "Ronald",
-    surname: "Weasley",
+    user: {
+      username: "rweasley",
+      password: "rw!password",
+      firstName: "Ronald",
+      lastName: "Weasley",
+      role: "CLIENT"
+    },
     emailAddress: "r.weasley@gmail.com",
     accountNumber: 642279,
-    preferences: "Alpha",
-    projects: [1, 3],
-    pastProjects: [],
-    investableAmount: 45000
+    recommendation: "Alpha",
+    projects: [2, 3],
+    pastProjects: [1],
+    investableAmount: 45000,
+    advisorTeam: "Hogwarts"
+  },
+  {
+    id: 4,
+    user: {
+      username: "fbaggins",
+      password: "fb!password",
+      firstName: "Frodo",
+      lastName: "Baggins",
+      role: "CLIENT"
+    },
+    emailAddress: "f.baggins@gmail.com",
+    accountNumber: 992314,
+    recommendation: "Gamma",
+    projects: [2],
+    pastProjects: [1, 3],
+    investableAmount: 600000,
+    advisorTeam: "Shire"
+  },
+  {
+    id: 5,
+    user: {
+      username: "sgamgee",
+      password: "sg!password",
+      firstName: "Samwise",
+      lastName: "Gamgee",
+      role: "CLIENT"
+    },
+    emailAddress: "s.gamgee@gmail.com",
+    accountNumber: 992314,
+    recommendation: "Delta",
+    projects: [3, 2],
+    pastProjects: [1],
+    investableAmount: 400000,
+    advisorTeam: "Shire"
+  },
+  {
+    id: 6,
+    user: {
+      username: "lpevensie",
+      password: "lp!password",
+      firstName: "Lucy",
+      lastName: "Pevensie",
+      role: "CLIENT"
+    },
+    emailAddress: "l.pevensie@gmail.com",
+    accountNumber: 435262,
+    recommendation: "Alpha",
+    projects: [0],
+    pastProjects: [1],
+    investableAmount: 1000,
+    advisorTeam: "Narnia"
+  },
+  {
+    id: 7,
+    user: {
+      username: "epevensie",
+      password: "ep!password",
+      firstName: "Edmund",
+      lastName: "Pevensie",
+      role: "CLIENT"
+    },
+    emailAddress: "e.pevensie@gmail.com",
+    accountNumber: 435262,
+    recommendation: "Beta",
+    projects: [1],
+    pastProjects: [0],
+    investableAmount: 1000,
+    advisorTeam: "Narnia"
+  }
+])
+
+//ADVISOR
+// id
+// user
+// team
+/*
+'0': ObjectId("621342b2ffabd548cd37939a"),
+'1': ObjectId("621342b2ffabd548cd37939b"),
+'2': ObjectId("621342b2ffabd548cd37939c")
+
+ */
+
+db.advisors.insertMany([
+  {
+    id: 0,
+    user: {
+      username: "adumbledore",
+      password: "ad!password",
+      firstName: "Albus",
+      lastName: "Dumbledore",
+      role: "ADVISOR"
+    },
+    team: 'Hogwarts'
+  },
+  {
+    id: 1,
+    user: {
+      username: "wgandalf",
+      password: "wg!password",
+      firstName: "Wizard",
+      lastName: "Gandalf",
+      role: "ADVISOR"
+    },
+    team: "Shire"
+  },
+  {
+    id: 2,
+    user: {
+      username: "laslan",
+      password: "la!password",
+      firstName: "Lion",
+      lastName: "Aslan",
+      role: "ADVISOR"
+    },
+    team: "Narnia"
   }
 ])

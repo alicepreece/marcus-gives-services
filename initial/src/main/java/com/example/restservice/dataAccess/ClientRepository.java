@@ -39,5 +39,12 @@ public class ClientRepository {
         }
     }
 
+    public Client getClientByUsername(String filterUsername) {
+        try {
+            return clients.find(Filters.eq("user.username", filterUsername), Client.class).first();
+        } catch (Exception e) {
+            return new Client();
+        }
+    }
 
 }
