@@ -18,6 +18,7 @@ public class Client {
     private List<Integer> pastProjects;
     private int investableAmount;
     private String advisorTeam;
+    private Scores scores;
 
     public Client() {
     }
@@ -93,6 +94,10 @@ public class Client {
     public void setAdvisorTeam(String advisorTeam) {
         this.advisorTeam = advisorTeam;
     }
+
+    public Scores getScores() { return scores; }
+
+    public void setScores(Scores scores) { this.scores = scores; }
 
     @Override
     public boolean equals(Object o) {

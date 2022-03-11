@@ -47,4 +47,13 @@ public class ClientRepository {
         }
     }
 
+    public int createClient(Client client) {
+        try {
+            clients.insertOne(client);
+            return 200;
+        } catch(Exception e) {
+            return 500;
+        }
+    }
+
 }

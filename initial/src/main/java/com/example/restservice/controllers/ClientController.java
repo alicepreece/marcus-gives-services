@@ -3,10 +3,7 @@ package com.example.restservice.controllers;
 import com.example.restservice.models.Client;
 import com.example.restservice.services.ClientService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,5 +46,12 @@ public class ClientController {
         } else {
             return ResponseEntity.status(200).body(client);
         }
+    }
+
+    @CrossOrigin("http://localhost:4200")
+    @PostMapping("/addClient")
+    public ResponseEntity<Object>addClient(@RequestBody Client client) {
+        int status = service.addClient(client);
+        return ResponseEntity.status(status).body(null);
     }
 }

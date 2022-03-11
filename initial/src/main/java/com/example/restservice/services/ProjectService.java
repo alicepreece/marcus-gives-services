@@ -2,6 +2,7 @@ package com.example.restservice.services;
 
 import com.example.restservice.dataAccess.ProjectRepository;
 import com.example.restservice.models.Project;
+import com.example.restservice.models.Scores;
 
 import java.util.List;
 
@@ -27,4 +28,6 @@ public class ProjectService {
     public int addProject(Project newProject) {
         return repository.createProject(newProject);
     }
+
+    public int addProjectScore(Scores newProjectScore) { return repository.addProjectScore(newProjectScore); }
 }

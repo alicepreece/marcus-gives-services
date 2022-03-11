@@ -3,6 +3,7 @@ package com.example.restservice.controllers;
 import java.util.List;
 
 import com.example.restservice.models.Project;
+import com.example.restservice.models.Scores;
 import com.example.restservice.services.ProjectService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,9 @@ public class ProjectController {
 
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/addProject")
-	public ResponseEntity<Object>addProject(@RequestBody Project project) {
+	public ResponseEntity<Object>addProject(@RequestBody Project project, Scores projectScore) {
 		int status = service.addProject(project);
-		return ResponseEntity.status(status).body(null);
+		int scoreStatus = service.addProjectScore(projectScore);
+		return ResponseEntity.status(status).body("Score added status" + scoreStatus);
 	}
 }

@@ -2,6 +2,7 @@ package com.example.restservice.dataAccess;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Project;
+import com.example.restservice.models.Scores;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -13,10 +14,12 @@ import java.util.List;
 @Repository
 public class ProjectRepository {
     private MongoCollection<Project> projects;
+    private MongoCollection<Scores> scores;
 
     public ProjectRepository() {
         MongoDatabase database = DBConnection.getDBConnection().getDatabase("marcus-gives");
         projects = database.getCollection("projects", Project.class);
+        scores = database.getCollection("scores", Scores.class);
     }
 
     public List<Project> getProjects() {
@@ -42,6 +45,15 @@ public class ProjectRepository {
             projects.insertOne(project);
             return 200;
         } catch(Exception e) {
+            return 500;
+        }
+    }
+
+    public int addProjectScore(Scores score) {
+        try {
+            scores.insertOne(score);
+            return 200;
+        } catch (Exception e) {
             return 500;
         }
     }

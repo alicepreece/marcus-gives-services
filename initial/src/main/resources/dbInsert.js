@@ -264,3 +264,86 @@ db.advisors.insertMany([
     team: "Narnia"
   }
 ])
+
+//Scores
+//
+//     int id;
+//     Boolean socialOverEnv;
+//     Boolean economyOverHealthcare;
+//     Boolean povertyOverEducation;
+//     Boolean targetedOverDiverse;
+//     FeesEnum managementFees;
+//     Boolean esgOverAll;
+//     Boolean shortOverLongTerm;
+//     List<RegionEnum> region;
+//
+//
+
+db.scores.insertMany([
+  {
+    id: 0,
+    socialOverEnv: false,
+    economyOverHealthcare: false,
+    povertyOverEducation: true,
+    targetedOverDiverse: false,
+    managementFees: 2,
+    esgOverAll: true,
+    shortOverLongTerm: false,
+    region: [0]
+  },
+  {
+    id: 1,
+    socialOverEnv: true,
+    economyOverHealthcare: true,
+    povertyOverEducation: false,
+    targetedOverDiverse: false,
+    managementFees: 1,
+    esgOverAll: true,
+    shortOverLongTerm: false,
+    region: [2]
+  },
+  {
+    id: 2,
+    socialOverEnv: true,
+    economyOverHealthcare: true,
+    povertyOverEducation: true,
+    targetedOverDiverse: false,
+    managementFees: 2,
+    esgOverAll: true,
+    shortOverLongTerm: false,
+    region: [2]
+  },
+  {
+    id: 3,
+    socialOverEnv: true,
+    economyOverHealthcare: true,
+    povertyOverEducation: true,
+    targetedOverDiverse: false,
+    managementFees: 2,
+    esgOverAll: true,
+    shortOverLongTerm: true,
+    region: [5]
+  },
+  {
+    id: 4,
+    socialOverEnv: true,
+    economyOverHealthcare: true,
+    povertyOverEducation: false,
+    targetedOverDiverse: true,
+    managementFees: 0,
+    esgOverAll: false,
+    shortOverLongTerm: false,
+    region: [0]
+  },
+  {
+    id: 5,
+    socialOverEnv: true,
+    economyOverHealthcare: false,
+    povertyOverEducation: true,
+    targetedOverDiverse: false,
+    managementFees: 0,
+    esgOverAll: false,
+    shortOverLongTerm: true,
+    region: [3]
+  }
+])
