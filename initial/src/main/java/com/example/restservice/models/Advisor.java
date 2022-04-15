@@ -8,24 +8,24 @@ import java.util.Objects;
 public class Advisor {
     @BsonRepresentation(BsonType.OBJECT_ID)
     public String _id;
-    private int userId;
+    private int id;
     private User user;
     private String team;
 
     public Advisor(){}
 
     public Advisor(int id, User user, String team) {
-        this.userId = id;
+        this.id = id;
         this.user = user;
         this.team = team;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -49,20 +49,20 @@ public class Advisor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Advisor advisor = (Advisor) o;
-        return userId == advisor.userId &&
+        return id == advisor.id &&
                 Objects.equals(user, advisor.user) &&
                 Objects.equals(team, advisor.team);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, user, team);
+        return Objects.hash(id, user, team);
     }
 
     @Override
     public String toString() {
         return "Advisor{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", user=" + user +
                 ", team='" + team + '\'' +
                 '}';

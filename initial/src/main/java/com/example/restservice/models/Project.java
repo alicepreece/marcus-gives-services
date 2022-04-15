@@ -12,31 +12,30 @@ public class Project {
 	public String _id;
 	private int id;
 	private String name;
+	private String goal;
+	private int total;
 	private String region;
 	private String aims;
-	private String fundType;
 	private String strategy;
-	private String avoidedAreas;
-	private String managementFees;
+	private String fees;
 	private List<Integer> investors;
-	private int total;
+	private Scores scores;
 
 	public Project() {
 	}
 
-	public Project(String _id, int id, String name, String region, String aims, String fundType, String strategy, String avoidedAreas, String managementFees, List<Integer> investors, int total) {
-		this._id = _id;
-		this.id = id;
-		this.name = name;
-		this.region = region;
-		this.aims = aims;
-		this.fundType = fundType;
-		this.strategy = strategy;
-		this.avoidedAreas = avoidedAreas;
-		this.managementFees = managementFees;
-		this.investors = investors;
-		this.total = total;
-	}
+//	public Project(int id, String name, String goal, int total, String region, String aims, String strategy, String fees, List<Integer> investors, Scores scores) {
+//		this.id = id;
+//		this.name = name;
+//		this.goal = goal;
+//		this.total = total;
+//		this.region = region;
+//		this.aims = aims;
+//		this.strategy = strategy;
+//		this.fees = fees;
+//		this.investors = investors;
+//		this.scores = scores;
+//	}
 
 	public int getId() {
 		return id;
@@ -70,13 +69,11 @@ public class Project {
 		this.aims = aims;
 	}
 
-	public String getFundType() {
-		return fundType;
+	public String getGoal() {
+		return goal;
 	}
 
-	public void setFundType(String fundType) {
-		this.fundType = fundType;
-	}
+	public void setGoal(String goal) { this.goal = goal;}
 
 	public String getStrategy() {
 		return strategy;
@@ -86,20 +83,12 @@ public class Project {
 		this.strategy = strategy;
 	}
 
-	public String getAvoidedAreas() {
-		return avoidedAreas;
+	public String getFees() {
+		return fees;
 	}
 
-	public void setAvoidedAreas(String avoidedAreas) {
-		this.avoidedAreas = avoidedAreas;
-	}
-
-	public String getManagementFees() {
-		return managementFees;
-	}
-
-	public void setManagementFees(String managementFees) {
-		this.managementFees = managementFees;
+	public void setFees(String managementFees) {
+		this.fees = managementFees;
 	}
 
 	public List<Integer> getInvestors() {
@@ -118,6 +107,10 @@ public class Project {
 		this.total = total;
 	}
 
+	public Scores getScores() { return scores; }
+
+	public void setScores(Scores scores) { this.scores = scores; }
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -126,34 +119,33 @@ public class Project {
 		return id == project.id &&
 				total == project.total &&
 				Objects.equals(name, project.name) &&
+				Objects.equals(goal, project.goal) &&
 				Objects.equals(region, project.region) &&
 				Objects.equals(aims, project.aims) &&
-				Objects.equals(fundType, project.fundType) &&
 				Objects.equals(strategy, project.strategy) &&
-				Objects.equals(avoidedAreas, project.avoidedAreas) &&
-				Objects.equals(managementFees, project.managementFees) &&
-				Objects.equals(investors, project.investors);
+				Objects.equals(fees, project.fees) &&
+				Objects.equals(investors, project.investors) &&
+				Objects.equals(scores, project.scores);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(_id, id, name, region, aims, fundType, strategy, avoidedAreas, managementFees, investors, total);
+		return Objects.hash(id, name, goal, total, region, aims, strategy, fees, investors, scores);
 	}
 
 	@Override
 	public String toString() {
 		return "Project{" +
-				"_id='" + _id + '\'' +
 				", id=" + id +
 				", name='" + name + '\'' +
+				", goal='" + goal + '\'' +
+				", total=" + total +
 				", region='" + region + '\'' +
 				", aims='" + aims + '\'' +
-				", fundType='" + fundType + '\'' +
 				", strategy='" + strategy + '\'' +
-				", avoidedAreas='" + avoidedAreas + '\'' +
-				", managementFees='" + managementFees + '\'' +
+				", fees='" + fees + '\'' +
 				", investors=" + investors +
-				", total=" + total +
+				", scores=" + scores +
 				'}';
 	}
 }

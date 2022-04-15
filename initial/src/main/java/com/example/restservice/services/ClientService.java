@@ -1,6 +1,5 @@
 package com.example.restservice.services;
 
-import com.example.restservice.controllers.ScoreController;
 import com.example.restservice.dataAccess.ClientRepository;
 import com.example.restservice.dataAccess.ProjectRepository;
 import com.example.restservice.models.*;
@@ -11,10 +10,12 @@ public class ClientService {
 
     ClientRepository repository;
     ProjectRepository projectRepository;
-    ScoreController scoreController;
+    ScoreRequestService scoreRequestService;
 
     public ClientService(){
         repository = new ClientRepository();
+        projectRepository = new ProjectRepository();
+        scoreRequestService = new ScoreRequestService();
     }
 
     public List<Client> getClients() {
@@ -42,13 +43,14 @@ public class ClientService {
 
     public String fetchRecommendation(Scores scores) {
         Project recommendedProject;
-        try {
-            String recommendation = scoreController.calculateRecommendation(scores);
-            String recommendationId = recommendation.substring(7, recommendation.length()-2);
-            recommendedProject = projectRepository.getProjectByID(recommendationId);
-        } catch (Exception e) {
-            recommendedProject = new Project();
-        }
+        String recommendation = scoreRequestService.calculateRecommendation(scores);
+        String recommendationId = recommendation.substring(7, recommendation.length()-2);
+        recommendedProject = projectRepository.getProjectByID(recommendationId);
         return recommendedProject.getName();
+    }
+
+    public int updateClient(String clientId, Client newClient) {
+        newClient.setRecommendation(fetchRecommendation(newClient.getScores()));
+        return repository.updateClient(clientId, newClient);
     }
 }

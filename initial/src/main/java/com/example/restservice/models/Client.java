@@ -14,8 +14,8 @@ public class Client {
     private String emailAddress;
     private int accountNumber;
     private String recommendation;
-    private List<Integer> projects;
-    private List<Integer> pastProjects;
+    private List<Donation> donations;
+    private List<Donation> pastDonations;
     private int investableAmount;
     private String advisorTeam;
     private Scores scores;
@@ -63,20 +63,20 @@ public class Client {
         this.recommendation = recommendation;
     }
 
-    public List<Integer> getProjects() {
-        return projects;
+    public List<Donation> getDonations() {
+        return donations;
     }
 
-    public void setProjects(List<Integer> projects) {
-        this.projects = projects;
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
     }
 
-    public List<Integer> getPastProjects() {
-        return pastProjects;
+    public List<Donation> getPastDonations() {
+        return pastDonations;
     }
 
-    public void setPastProjects(List<Integer> pastProjects) {
-        this.pastProjects = pastProjects;
+    public void setPastDonations(List<Donation> pastDonations) {
+        this.pastDonations = pastDonations;
     }
 
     public int getInvestableAmount() {
@@ -111,13 +111,13 @@ public class Client {
                 Objects.equals(emailAddress, client.emailAddress) &&
                 Objects.equals(recommendation, client.recommendation) &&
                 Objects.equals(advisorTeam, client.advisorTeam) &&
-                Objects.equals(projects, client.projects) &&
-                Objects.equals(pastProjects, client.pastProjects);
+                Objects.equals(donations, client.donations) &&
+                Objects.equals(pastDonations, client.pastDonations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, emailAddress, accountNumber, recommendation, projects, pastProjects, investableAmount, advisorTeam);
+        return Objects.hash(id, user, emailAddress, accountNumber, recommendation, donations, pastDonations, investableAmount, advisorTeam);
     }
 
     @Override
@@ -128,8 +128,8 @@ public class Client {
                 ", emailAddress='" + emailAddress + '\'' +
                 ", accountNumber=" + accountNumber +
                 ", recommendation='" + recommendation + '\'' +
-                ", projects=" + projects +
-                ", pastProjects=" + pastProjects +
+                ", projects=" + donations +
+                ", pastProjects=" + pastDonations +
                 ", investableAmount=" + investableAmount +
                 ", advisorTeam=" + advisorTeam +
                 '}';

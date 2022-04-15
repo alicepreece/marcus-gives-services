@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.restservice.models.Project;
 import com.example.restservice.models.Scores;
+import com.example.restservice.models.requestModels.DonationRequest;
 import com.example.restservice.services.ProjectService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +40,40 @@ public class ProjectController {
 
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/addProject")
-	public ResponseEntity<Object>addProject(@RequestBody Project project, Scores projectScore) {
-		int status = service.addProject(project);
-		int scoreStatus = service.addProjectScore(projectScore);
-		return ResponseEntity.status(status).body("Score added status" + scoreStatus);
+	public ResponseEntity<Object>addProject(@RequestBody Project project) {
+		 int status = service.addProject(project);
+		return ResponseEntity.status(status).body("Project Created");
+	}
+
+	@CrossOrigin("http://localhost:4200")
+	@PutMapping("/updateProject/{projectId}")
+	public ResponseEntity<Object>updateProject(@PathVariable String projectId, @RequestBody Project project) {
+		int status = service.updateProject(projectId, project);
+		return ResponseEntity.status(status).body("Project Updated");
+	}
+
+	@CrossOrigin("http://localhost:4200")
+	@PostMapping("/donate")
+	public ResponseEntity<Object>donate(@RequestBody DonationRequest donationBody) {
+		int status = service.donate(donationBody);
+		return ResponseEntity.status(status).body("Donation Made");
+	}
+
+	@CrossOrigin("http://localhost:4200")
+	@PostMapping("/cancelDonation")
+	public ResponseEntity<Object>cancelDonation(@RequestBody DonationRequest donationBody) {
+		int status = service.cancelDonation(donationBody);
+		return ResponseEntity.status(status).body("Donation Made");
+	}
+
+	@CrossOrigin("http://localhost:4200")
+	@GetMapping("/score/{projectId}")
+	public ResponseEntity<Scores> getProjectScore(@PathVariable String projectId) {
+		Project project = service.getProjectByID(projectId);
+		if (project.equals(new Project())) {
+			return ResponseEntity.status(404).body(null);
+		} else {
+			return ResponseEntity.status(200).body(project.getScores());
+		}
 	}
 }

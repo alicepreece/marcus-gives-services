@@ -54,4 +54,11 @@ public class ClientController {
         int status = service.addClient(client);
         return ResponseEntity.status(status).body(null);
     }
+
+    @CrossOrigin("http://localhost:4200")
+    @PutMapping("/updateClient/{clientId}")
+    public ResponseEntity<Object>updateClient(@PathVariable String clientId, @RequestBody Client client) {
+        int status = service.updateClient(clientId, client);
+        return ResponseEntity.status(status).body(null);
+    }
 }

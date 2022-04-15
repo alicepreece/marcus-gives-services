@@ -2,13 +2,16 @@ package com.example.restservice.dataAccess;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Client;
+import com.example.restservice.models.Donation;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -56,4 +59,75 @@ public class ClientRepository {
         }
     }
 
+    public int updateClient(String clientId, Client client) {
+        try {
+            clients.updateOne(Filters.eq("id", Integer.parseInt(clientId)),
+                    Updates.combine(
+                            Updates.set("user.firstName", client.getUser().getFirstName()),
+                            Updates.set("user.lastName", client.getUser().getLastName()),
+                            Updates.set("user.username", client.getUser().getUsername()),
+                            Updates.set("accountNumber", client.getAccountNumber()),
+                            Updates.set("investableAmount", client.getInvestableAmount()),
+                            Updates.set("emailAddress", client.getEmailAddress()),
+                            Updates.set("scores.socialOverEnv", client.getScores().getSocialOverEnv()),
+                            Updates.set("scores.economyOverHealthcare", client.getScores().getEconomyOverHealthcare()),
+                            Updates.set("scores.povertyOverEducation", client.getScores().getPovertyOverEducation()),
+                            Updates.set("scores.targetedOverDiverse", client.getScores().getTargetedOverDiverse()),
+                            Updates.set("scores.managementFees", client.getScores().getManagementFees()),
+                            Updates.set("scores.esgOverAll", client.getScores().getEsgOverAll()),
+                            Updates.set("scores.shortOverLongTerm", client.getScores().getShortOverLongTerm())
+                    )
+            );
+            return 200;
+        } catch(Exception e) {
+            throw e;
+        }
+    }
+
+    public int updateClientDonation(int clientId, Donation donation) {
+        try {
+            Client client = this.getClientByID(Integer.toString(clientId));
+            List<Donation> newDonations = client.getDonations();
+            if (newDonations == null) {
+                newDonations = new ArrayList<>();
+            }
+            newDonations.add(donation);
+            int investableAmount = client.getInvestableAmount() - donation.getAmount();
+            if (investableAmount < 0) {
+                return 500;
+            }
+            clients.updateOne(Filters.eq("id", clientId),
+                    Updates.combine(
+                            Updates.set("donations", newDonations),
+                            Updates.set("investableAmount", investableAmount)
+                    )
+            );
+            return 200;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public int cancelDonation(int clientId, Donation donation) {
+        try {
+            Client client = this.getClientByID(Integer.toString(clientId));
+            List<Donation> newDonations = client.getDonations().stream().filter(pro -> pro.getProject().getId() != donation.getProject().getId()).collect(Collectors.toList());
+            List<Donation> pastDonations = client.getPastDonations();
+            if (pastDonations == null) {
+                pastDonations = new ArrayList<>();
+            }
+            pastDonations.add(donation);
+            int investableAmount = client.getInvestableAmount() + donation.getAmount();
+            clients.updateOne(Filters.eq("id", clientId),
+                    Updates.combine(
+                            Updates.set("donations", newDonations),
+                            Updates.set("pastDonations", pastDonations),
+                            Updates.set("investableAmount", investableAmount)
+                    )
+            );
+            return 200;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

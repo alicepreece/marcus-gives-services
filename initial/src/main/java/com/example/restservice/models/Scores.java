@@ -1,28 +1,24 @@
 package com.example.restservice.models;
 
-import org.bson.BsonType;
-import org.bson.codecs.pojo.annotations.BsonRepresentation;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Scores {
 
-    @BsonRepresentation(BsonType.OBJECT_ID)
-    public String _id;
     int id;
     Boolean socialOverEnv;
     Boolean economyOverHealthcare;
     Boolean povertyOverEducation;
     Boolean targetedOverDiverse;
-    FeesEnum managementFees;
+    String managementFees;
     Boolean esgOverAll;
     Boolean shortOverLongTerm;
-    List<RegionEnum> region;
+    List<String> region;
 
     public Scores(){}
 
-    public Scores(int id, Boolean socialOverEnv, Boolean economyOverHealthcare, Boolean povertyOverEducation, Boolean targetedOverDiverse, FeesEnum managementFees, Boolean esgOverAll, Boolean shortOverLongTerm, List<RegionEnum> region) {
+    public Scores(int id, Boolean socialOverEnv, Boolean economyOverHealthcare, Boolean povertyOverEducation, Boolean targetedOverDiverse, String managementFees, Boolean esgOverAll, Boolean shortOverLongTerm, List<String> region) {
         this.id = id;
         this.socialOverEnv = socialOverEnv;
         this.economyOverHealthcare = economyOverHealthcare;
@@ -74,11 +70,11 @@ public class Scores {
         this.targetedOverDiverse = targetedOverDiverse;
     }
 
-    public FeesEnum getManagementFees() {
+    public String getManagementFees() {
         return managementFees;
     }
 
-    public void setManagementFees(FeesEnum managementFees) {
+    public void setManagementFees(String managementFees) {
         this.managementFees = managementFees;
     }
 
@@ -98,11 +94,11 @@ public class Scores {
         this.shortOverLongTerm = shortOverLongTerm;
     }
 
-    public List<RegionEnum> getRegion() {
+    public List<String> getRegion() {
         return region;
     }
 
-    public void setRegion(List<RegionEnum> region) {
+    public void setRegion(List<String> region) {
         this.region = region;
     }
 
