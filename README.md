@@ -1,4 +1,4 @@
-# marcus-gives-services
+# Mary Gives Services
 
 This project was created with Java Springboot
 
