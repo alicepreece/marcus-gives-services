@@ -1,6 +1,6 @@
 package com.example.restservice.services;
 
-import com.example.restservice.mocks.UserRepository;
+import com.example.restservice.repositories.UserRepository;
 import com.example.restservice.models.User;
 import com.example.restservice.models.requestModels.AuthRequest;
 import com.example.restservice.models.responseModels.AuthResponse;

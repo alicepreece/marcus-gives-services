@@ -1,4 +1,4 @@
-package com.example.restservice.mocks;
+package com.example.restservice.repositories;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Client;

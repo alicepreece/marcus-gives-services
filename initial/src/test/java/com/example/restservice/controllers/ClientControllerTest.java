@@ -1,6 +1,6 @@
 package com.example.restservice.controllers;
 
-import com.example.restservice.mocks.Mocks;
+import com.example.restservice.repositories.Mocks;
 import com.example.restservice.models.Client;
 import com.example.restservice.services.ClientService;
 import org.junit.Test;

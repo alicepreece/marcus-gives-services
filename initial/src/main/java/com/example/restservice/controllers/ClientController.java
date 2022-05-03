@@ -1,7 +1,7 @@
 package com.example.restservice.controllers;
 
-import com.example.restservice.mocks.ClientRepository;
-import com.example.restservice.mocks.ProjectRepository;
+import com.example.restservice.repositories.ClientRepository;
+import com.example.restservice.repositories.ProjectRepository;
 import com.example.restservice.models.Client;
 import com.example.restservice.services.ClientService;
 import com.example.restservice.services.ScoreRequestService;

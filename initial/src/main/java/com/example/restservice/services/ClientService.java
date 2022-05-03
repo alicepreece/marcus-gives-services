@@ -1,7 +1,7 @@
 package com.example.restservice.services;
 
-import com.example.restservice.mocks.ClientRepository;
-import com.example.restservice.mocks.ProjectRepository;
+import com.example.restservice.repositories.ClientRepository;
+import com.example.restservice.repositories.ProjectRepository;
 import com.example.restservice.models.*;
 
 import java.util.List;

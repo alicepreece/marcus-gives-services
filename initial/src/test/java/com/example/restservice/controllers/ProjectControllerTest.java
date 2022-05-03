@@ -1,6 +1,6 @@
 package com.example.restservice.controllers;
 
-import com.example.restservice.mocks.Mocks;
+import com.example.restservice.repositories.Mocks;
 import com.example.restservice.models.Project;
 import com.example.restservice.models.requestModels.DonationRequest;
 import com.example.restservice.services.ProjectService;

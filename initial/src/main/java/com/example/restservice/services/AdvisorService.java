@@ -1,8 +1,7 @@
 package com.example.restservice.services;
 
-import com.example.restservice.mocks.AdvisorRepository;
+import com.example.restservice.repositories.AdvisorRepository;
 import com.example.restservice.models.Advisor;
-import com.example.restservice.models.Client;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

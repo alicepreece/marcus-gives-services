@@ -1,19 +1,15 @@
 package com.example.restservice.services;
 
-import com.example.restservice.mocks.ClientRepository;
-import com.example.restservice.mocks.Mocks;
-import com.example.restservice.mocks.ProjectRepository;
-import com.example.restservice.models.Donation;
+import com.example.restservice.repositories.ClientRepository;
+import com.example.restservice.repositories.Mocks;
+import com.example.restservice.repositories.ProjectRepository;
 import com.example.restservice.models.requestModels.DonationRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;

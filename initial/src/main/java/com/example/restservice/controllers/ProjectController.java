@@ -2,8 +2,8 @@ package com.example.restservice.controllers;
 
 import java.util.List;
 
-import com.example.restservice.mocks.ClientRepository;
-import com.example.restservice.mocks.ProjectRepository;
+import com.example.restservice.repositories.ClientRepository;
+import com.example.restservice.repositories.ProjectRepository;
 import com.example.restservice.models.Project;
 import com.example.restservice.models.Scores;
 import com.example.restservice.models.requestModels.DonationRequest;
