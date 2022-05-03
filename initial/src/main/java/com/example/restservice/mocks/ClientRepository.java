@@ -1,4 +1,4 @@
-package com.example.restservice.dataAccess;
+package com.example.restservice.mocks;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Client;
@@ -36,7 +36,8 @@ public class ClientRepository {
 
     public Client getClientByID(String filterID) {
         try {
-            return clients.find(Filters.eq("id", Integer.parseInt(filterID)), Client.class).first();
+            Client client = clients.find(Filters.eq("id", Integer.parseInt(filterID)), Client.class).first();
+            return client;
         } catch (Exception e) {
             return new Client();
         }
@@ -44,7 +45,8 @@ public class ClientRepository {
 
     public Client getClientByUsername(String filterUsername) {
         try {
-            return clients.find(Filters.eq("user.username", filterUsername), Client.class).first();
+            Client client = clients.find(Filters.eq("user.username", filterUsername), Client.class).first();
+            return client;
         } catch (Exception e) {
             return new Client();
         }
@@ -69,13 +71,18 @@ public class ClientRepository {
                             Updates.set("accountNumber", client.getAccountNumber()),
                             Updates.set("investableAmount", client.getInvestableAmount()),
                             Updates.set("emailAddress", client.getEmailAddress()),
+                            Updates.set("recommendation", client.getRecommendation()),
+                            Updates.set("donations", client.getDonations()),
+                            Updates.set("pastDonations", client.getPastDonations()),
+                            Updates.set("scores.id", -1),
                             Updates.set("scores.socialOverEnv", client.getScores().getSocialOverEnv()),
                             Updates.set("scores.economyOverHealthcare", client.getScores().getEconomyOverHealthcare()),
                             Updates.set("scores.povertyOverEducation", client.getScores().getPovertyOverEducation()),
                             Updates.set("scores.targetedOverDiverse", client.getScores().getTargetedOverDiverse()),
                             Updates.set("scores.managementFees", client.getScores().getManagementFees()),
                             Updates.set("scores.esgOverAll", client.getScores().getEsgOverAll()),
-                            Updates.set("scores.shortOverLongTerm", client.getScores().getShortOverLongTerm())
+                            Updates.set("scores.shortOverLongTerm", client.getScores().getShortOverLongTerm()),
+                            Updates.set("scores.region", client.getScores().getRegion())
                     )
             );
             return 200;
@@ -102,6 +109,7 @@ public class ClientRepository {
                             Updates.set("investableAmount", investableAmount)
                     )
             );
+            System.out.println("Successful Client Donation");
             return 200;
         } catch (Exception e) {
             throw e;
@@ -125,6 +133,7 @@ public class ClientRepository {
                             Updates.set("investableAmount", investableAmount)
                     )
             );
+            System.out.println("Successful Client Cancel");
             return 200;
         } catch (Exception e) {
             throw e;

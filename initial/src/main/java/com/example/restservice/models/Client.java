@@ -23,6 +23,19 @@ public class Client {
     public Client() {
     }
 
+    public Client(int id, User user, String emailAddress, int accountNumber, String recommendation, List<Donation> donations, List<Donation> pastDonations, int investableAmount, String advisorTeam, Scores scores) {
+        this.id = id;
+        this.user = user;
+        this.emailAddress = emailAddress;
+        this.accountNumber = accountNumber;
+        this.recommendation = recommendation;
+        this.donations = donations;
+        this.pastDonations = pastDonations;
+        this.investableAmount = investableAmount;
+        this.advisorTeam = advisorTeam;
+        this.scores = scores;
+    }
+
     public int getId() {
         return id;
     }
@@ -110,9 +123,10 @@ public class Client {
                 Objects.equals(user, client.user) &&
                 Objects.equals(emailAddress, client.emailAddress) &&
                 Objects.equals(recommendation, client.recommendation) &&
-                Objects.equals(advisorTeam, client.advisorTeam) &&
                 Objects.equals(donations, client.donations) &&
-                Objects.equals(pastDonations, client.pastDonations);
+                Objects.equals(pastDonations, client.pastDonations) &&
+                Objects.equals(advisorTeam, client.advisorTeam) &&
+                Objects.equals(scores, client.scores);
     }
 
     @Override

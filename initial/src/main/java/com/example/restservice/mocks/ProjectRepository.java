@@ -1,4 +1,4 @@
-package com.example.restservice.dataAccess;
+package com.example.restservice.mocks;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Project;
@@ -86,6 +86,7 @@ public class ProjectRepository {
                             Updates.set("investors", investors)
                     )
             );
+            System.out.println("successful project update");
             return 200;
         } catch (Exception e) {
             throw e;
@@ -108,6 +109,7 @@ public class ProjectRepository {
                             Updates.set("investors", investors)
                     )
             );
+            System.out.println("Successful Project Cancel");
             return 200;
         } catch (Exception e) {
             throw e;

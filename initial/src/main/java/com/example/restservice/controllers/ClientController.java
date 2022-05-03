@@ -1,7 +1,10 @@
 package com.example.restservice.controllers;
 
+import com.example.restservice.mocks.ClientRepository;
+import com.example.restservice.mocks.ProjectRepository;
 import com.example.restservice.models.Client;
 import com.example.restservice.services.ClientService;
+import com.example.restservice.services.ScoreRequestService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +12,10 @@ import java.util.List;
 
 @RestController
 public class ClientController {
-
-    ClientService service = new ClientService();
+    ClientRepository clientRepository = new ClientRepository();
+    ProjectRepository projectRepository = new ProjectRepository();
+    ScoreRequestService scoreRequestService = new ScoreRequestService();
+    ClientService service = new ClientService(clientRepository, projectRepository, scoreRequestService);
 
     public ClientController(){
     }

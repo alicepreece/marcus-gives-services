@@ -10,9 +10,9 @@ public class DonationRequest {
     Integer amount;
     Integer timestamp;
 
-    DonationRequest() {}
+    public DonationRequest() {}
 
-    DonationRequest(Integer clientId, Integer projectId, Integer amount, Integer timestamp) {
+    public DonationRequest(Integer clientId, Integer projectId, Integer amount, Integer timestamp) {
         this.clientId = clientId;
         this.projectId = projectId;
         this.amount = amount;

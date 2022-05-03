@@ -24,18 +24,18 @@ public class Project {
 	public Project() {
 	}
 
-//	public Project(int id, String name, String goal, int total, String region, String aims, String strategy, String fees, List<Integer> investors, Scores scores) {
-//		this.id = id;
-//		this.name = name;
-//		this.goal = goal;
-//		this.total = total;
-//		this.region = region;
-//		this.aims = aims;
-//		this.strategy = strategy;
-//		this.fees = fees;
-//		this.investors = investors;
-//		this.scores = scores;
-//	}
+	public Project(int id, String name, String goal, int total, String region, String aims, String strategy, String fees, List<Integer> investors, Scores scores) {
+		this.id = id;
+		this.name = name;
+		this.goal = goal;
+		this.total = total;
+		this.region = region;
+		this.aims = aims;
+		this.strategy = strategy;
+		this.fees = fees;
+		this.investors = investors;
+		this.scores = scores;
+	}
 
 	public int getId() {
 		return id;

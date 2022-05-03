@@ -1,4 +1,4 @@
-package com.example.restservice.dataAccess;
+package com.example.restservice.mocks;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Advisor;
@@ -42,6 +42,15 @@ public class AdvisorRepository {
             } catch (Exception e) {
                 return new Advisor();
             }
+        }
+    }
+
+    public int createAdvisor(Advisor advisor) {
+        try {
+            advisors.insertOne(advisor);
+            return 200;
+        } catch(Exception e) {
+            return 500;
         }
     }
 }

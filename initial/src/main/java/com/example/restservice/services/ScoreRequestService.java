@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ScoreRequestService {
 
-    public static String calculateRecommendation(Scores idealScore) {
+    public String calculateRecommendation(Scores idealScore) {
         HttpURLConnection conn;
         String output;
         try {

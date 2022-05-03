@@ -2,6 +2,8 @@ package com.example.restservice.controllers;
 
 import java.util.List;
 
+import com.example.restservice.mocks.ClientRepository;
+import com.example.restservice.mocks.ProjectRepository;
 import com.example.restservice.models.Project;
 import com.example.restservice.models.Scores;
 import com.example.restservice.models.requestModels.DonationRequest;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProjectController {
-	ProjectService service = new ProjectService();
+	ProjectRepository repository = new ProjectRepository();
+	ClientRepository clientRepository = new ClientRepository();
+	ProjectService service = new ProjectService(repository, clientRepository);
 
 	public ProjectController() {
 	}
@@ -42,28 +46,29 @@ public class ProjectController {
 	@PostMapping("/addProject")
 	public ResponseEntity<Object>addProject(@RequestBody Project project) {
 		 int status = service.addProject(project);
-		return ResponseEntity.status(status).body("Project Created");
+		return ResponseEntity.status(status).body(project);
 	}
 
 	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/updateProject/{projectId}")
 	public ResponseEntity<Object>updateProject(@PathVariable String projectId, @RequestBody Project project) {
 		int status = service.updateProject(projectId, project);
-		return ResponseEntity.status(status).body("Project Updated");
+		return ResponseEntity.status(status).body(project);
 	}
 
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/donate")
 	public ResponseEntity<Object>donate(@RequestBody DonationRequest donationBody) {
 		int status = service.donate(donationBody);
-		return ResponseEntity.status(status).body("Donation Made");
+		System.out.println(status);
+		return ResponseEntity.status(status).body(donationBody);
 	}
 
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/cancelDonation")
 	public ResponseEntity<Object>cancelDonation(@RequestBody DonationRequest donationBody) {
 		int status = service.cancelDonation(donationBody);
-		return ResponseEntity.status(status).body("Donation Made");
+		return ResponseEntity.status(status).body(donationBody);
 	}
 
 	@CrossOrigin("http://localhost:4200")

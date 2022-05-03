@@ -1,7 +1,7 @@
 package com.example.restservice.services;
 
-import com.example.restservice.dataAccess.ClientRepository;
-import com.example.restservice.dataAccess.ProjectRepository;
+import com.example.restservice.mocks.ClientRepository;
+import com.example.restservice.mocks.ProjectRepository;
 import com.example.restservice.models.*;
 
 import java.util.List;
@@ -12,10 +12,10 @@ public class ClientService {
     ProjectRepository projectRepository;
     ScoreRequestService scoreRequestService;
 
-    public ClientService(){
-        repository = new ClientRepository();
-        projectRepository = new ProjectRepository();
-        scoreRequestService = new ScoreRequestService();
+    public ClientService(ClientRepository repository1, ProjectRepository projectRepository1, ScoreRequestService scoreRequestService1) {
+        repository = repository1;
+        projectRepository = projectRepository1;
+        scoreRequestService = scoreRequestService1;
     }
 
     public List<Client> getClients() {
@@ -41,10 +41,13 @@ public class ClientService {
         return repository.createClient(newClient);
     }
 
-    public String fetchRecommendation(Scores scores) {
+    private String fetchRecommendation(Scores scores) {
         Project recommendedProject;
         String recommendation = scoreRequestService.calculateRecommendation(scores);
         String recommendationId = recommendation.substring(7, recommendation.length()-2);
+        if (recommendationId.equals("-1")) {
+            return "";
+        }
         recommendedProject = projectRepository.getProjectByID(recommendationId);
         return recommendedProject.getName();
     }

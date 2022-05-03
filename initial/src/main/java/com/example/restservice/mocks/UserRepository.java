@@ -1,4 +1,4 @@
-package com.example.restservice.dataAccess;
+package com.example.restservice.mocks;
 
 import com.example.restservice.DBConnection;
 import com.example.restservice.models.Advisor;

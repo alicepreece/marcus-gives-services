@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Scores {
 
-    int id;
+    Integer id;
     Boolean socialOverEnv;
     Boolean economyOverHealthcare;
     Boolean povertyOverEducation;
@@ -18,7 +18,7 @@ public class Scores {
 
     public Scores(){}
 
-    public Scores(int id, Boolean socialOverEnv, Boolean economyOverHealthcare, Boolean povertyOverEducation, Boolean targetedOverDiverse, String managementFees, Boolean esgOverAll, Boolean shortOverLongTerm, List<String> region) {
+    public Scores(Integer id, Boolean socialOverEnv, Boolean economyOverHealthcare, Boolean povertyOverEducation, Boolean targetedOverDiverse, String managementFees, Boolean esgOverAll, Boolean shortOverLongTerm, List<String> region) {
         this.id = id;
         this.socialOverEnv = socialOverEnv;
         this.economyOverHealthcare = economyOverHealthcare;
@@ -30,11 +30,11 @@ public class Scores {
         this.region = region;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

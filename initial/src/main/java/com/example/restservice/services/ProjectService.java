@@ -1,7 +1,7 @@
 package com.example.restservice.services;
 
-import com.example.restservice.dataAccess.ClientRepository;
-import com.example.restservice.dataAccess.ProjectRepository;
+import com.example.restservice.mocks.ClientRepository;
+import com.example.restservice.mocks.ProjectRepository;
 import com.example.restservice.models.Donation;
 import com.example.restservice.models.Project;
 import com.example.restservice.models.requestModels.DonationRequest;
@@ -12,9 +12,9 @@ public class ProjectService {
     ProjectRepository repository;
     ClientRepository clientRepository;
 
-    public ProjectService(){
-        repository = new ProjectRepository();
-        clientRepository = new ClientRepository();
+    public ProjectService(ProjectRepository projectRepository, ClientRepository clientRepository1){
+        repository = projectRepository;
+        clientRepository = clientRepository1;
     }
 
     public static void main(String[] args) {
@@ -42,8 +42,15 @@ public class ProjectService {
         int amountValue = donationRequest.getAmount();
         int timeStamp = donationRequest.getTimestamp();
         Donation donation = new Donation(project, amountValue, timeStamp);
-        int statusProject = repository.updateProjectDonation(project, amountValue, donationRequest.getClientId());
-        int statusClient = clientRepository.updateClientDonation(donationRequest.getClientId(), donation);
+        int statusProject = repository.updateProjectDonation(
+                project,
+                amountValue,
+                donationRequest.getClientId()
+        );
+        int statusClient = clientRepository.updateClientDonation(
+                donationRequest.getClientId(),
+                donation
+        );
         if (statusClient == 200 && statusProject == 200) {
             return 200;
         } else {
