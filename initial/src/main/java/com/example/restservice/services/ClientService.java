@@ -46,7 +46,7 @@ public class ClientService {
         String recommendation = scoreRequestService.calculateRecommendation(scores);
         String recommendationId = recommendation.substring(7, recommendation.length()-2);
         if (recommendationId.equals("-1")) {
-            return "";
+            return "None";
         }
         recommendedProject = projectRepository.getProjectByID(recommendationId);
         return recommendedProject.getName();

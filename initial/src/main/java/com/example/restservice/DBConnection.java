@@ -15,6 +15,7 @@ public class DBConnection {
     private static MongoClient mongoClient;
     private static DBConnection dbConnection;
 
+    // Mongo DB Driver: https://mongodb.github.io/mongo-java-driver/
     private DBConnection() {
         ConnectionString connectionString = new ConnectionString("mongodb+srv://qmulssdc1:pw-qmulssdc1@qmulssdc1.ou1k2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),

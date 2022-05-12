@@ -17,10 +17,6 @@ public class ProjectService {
         clientRepository = clientRepository1;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public List<Project> getProjects() {
         return repository.getProjects();
     }

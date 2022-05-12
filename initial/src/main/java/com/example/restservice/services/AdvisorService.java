@@ -15,9 +15,6 @@ public class AdvisorService {
         repository = new AdvisorRepository();
     }
 
-    public static void main(String[] args) {
-    }
-
     public List<Advisor> getAdvisors() {
         return repository.getAdvisors();
     }

@@ -8,6 +8,7 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+// Required for Swagger https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 @Configuration
 @EnableWebMvc
 public class SpringFoxConfig {
